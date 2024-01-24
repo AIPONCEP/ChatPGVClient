@@ -22,17 +22,14 @@
          <children>
             <VBox alignment="CENTER" prefHeight="70.0" prefWidth="405.0">
                <children>
-                  <ImageView fitHeight="70.0" fitWidth="68.0">
+                  <ImageView fitHeight="62.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/icons/usuario(1).png" />
                      </image>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
                   </ImageView>
                </children>
                <VBox.margin>
-                  <Insets top="1.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="311.0" spacing="20.0">
@@ -74,7 +71,7 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="73.0" prefWidth="314.0">
                <children>
-                  <Button mnemonicParsing="false" opacity="0.65" prefHeight="28.0" prefWidth="183.0" style="-fx-background-color: white; -fx-text-fill: black;" text="LOGIN" textFill="WHITE">
+                  <Button mnemonicParsing="false" opacity="0.65" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 10%;" text="LOGIN" textFill="WHITE">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font>

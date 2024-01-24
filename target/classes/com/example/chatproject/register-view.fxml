@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="422.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatproject.RegisterView">
    <children>
-      <ImageView fitHeight="384.0" fitWidth="429.0" layoutX="-6.0" layoutY="-8.0">
+      <ImageView fitHeight="474.0" fitWidth="475.0">
          <image>
-            <Image url="@../../../images/loginBackground.jpg" />
+            <Image url="@../../../images/registerBackground.jpg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" layoutX="-2.0" layoutY="3.0" prefHeight="375.0" prefWidth="422.0">
+      <VBox alignment="TOP_CENTER" layoutX="27.0" layoutY="17.0" prefHeight="440.0" prefWidth="422.0" spacing="30.0">
          <children>
             <VBox alignment="CENTER" prefHeight="70.0" prefWidth="405.0">
                <children>
@@ -32,9 +32,9 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="311.0" spacing="20.0">
+            <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="422.0" spacing="20.0">
                <children>
-                  <VBox prefHeight="75.0" prefWidth="196.0">
+                  <VBox prefHeight="69.0" prefWidth="196.0">
                      <children>
                         <Label text="Nombre" textFill="WHITE">
                            <font>
@@ -44,7 +44,8 @@
                         <TextField opacity="0.9">
                            <font>
                               <Font name="Microsoft YaHei UI" size="13.0" />
-                           </font></TextField>
+                           </font>
+                        </TextField>
                      </children>
                      <HBox.margin>
                         <Insets top="20.0" />
@@ -52,7 +53,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="299.0" spacing="20.0">
+            <HBox alignment="TOP_CENTER" prefHeight="56.0" prefWidth="422.0" spacing="20.0">
                <children>
                   <VBox prefHeight="100.0" prefWidth="192.0">
                      <children>
@@ -64,28 +65,44 @@
                         <TextField opacity="0.9">
                            <font>
                               <Font name="Microsoft YaHei UI" size="13.0" />
-                           </font></TextField>
+                           </font>
+                        </TextField>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="314.0">
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="299.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" opacity="0.65" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 10%;" text="LOGIN" textFill="WHITE">
+                  <VBox prefHeight="100.0" prefWidth="192.0">
+                     <children>
+                        <Label text="Telefono" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei UI Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField opacity="0.9">
+                           <font>
+                              <Font name="Microsoft YaHei UI" size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="90.0">
+               <children>
+                  <Button mnemonicParsing="false" opacity="0.65" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 10%;" text="LOGIN" textFill="WHITE">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" opacity="0.65" prefHeight="41.0" prefWidth="147.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 10%;" text="REGISTRAR" textFill="WHITE">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="20.0" />
                      </font>
                   </Button>
                </children>
-            </VBox>
-            <Label prefHeight="20.0" prefWidth="163.0" text="Registrate es gratis!" textFill="WHITE">
-               <font>
-                  <Font name="Microsoft YaHei UI Bold" size="15.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" top="20.0" />
-               </VBox.margin>
-            </Label>
+            </HBox>
          </children>
       </VBox>
    </children>
