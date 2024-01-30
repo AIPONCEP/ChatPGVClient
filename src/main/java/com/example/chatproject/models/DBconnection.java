@@ -47,59 +47,38 @@ public class DBconnection {
         }
     }
 
-    /**
-     * Método para ejecutar consultas SELECT en la base de datos y obtener una lista de HashMaps con los resultados.
-     * @param sql - Consulta SQL a ejecutar.
-     * @param values - Valores de los parámetros de la consulta.
-     * @return List<HashMap<String, String>> - Resultados de la consulta.
-     */
-    public static List<HashMap<String, String>> ExecuteSelectSql(String sql, String[] values) {
-        // Obtiene una conexión a la base de datos
-        Connection connect = DBconnection.getConnection();
-        ResultSet resultSet = null;
-        List<HashMap<String, String>> resultList = new ArrayList<>();
-
-        if (connect != null) {
+    private static Connection con = DBconnection.getConnection();
+    private static PreparedStatement sentencia = null;
+    private static ResultSet resultado = null;
+    public static String consultas(String statementSql){
+        con=DBconnection.getConnection();
+        if(con!=null){
             try {
-                // Prepara la consulta SQL
-                PreparedStatement statement = connect.prepareStatement(sql);
-                // Asigna los valores a la consulta preparada
-                if (values != null) {
-                    for (int i = 0; i < values.length; i++) {
-                        statement.setString(i + 1, values[i]);
-                    }
-                }
-                resultSet = statement.executeQuery();
-
-                // Procesa los resultados y los almacena en una lista de HashMaps
-                ResultSetMetaData metaData = resultSet.getMetaData();
+                sentencia = con.prepareStatement(statementSql);
+                resultado = sentencia.executeQuery();
+                ResultSetMetaData metaData = resultado.getMetaData();
                 int columnCount = metaData.getColumnCount();
+                StringBuilder result = new StringBuilder();
 
-                while (resultSet.next()) {
-                    HashMap<String, String> row = new HashMap<>();
-
+                while (resultado.next()) {
+                    StringBuilder row = new StringBuilder();
                     for (int i = 1; i <= columnCount; i++) {
                         String columnName = metaData.getColumnName(i);
-                        Object value = resultSet.getObject(columnName);
-                        row.put(columnName, String.valueOf(value));
+                        Object value = resultado.getObject(columnName);
+                        row.append(columnName).append(":").append(value).append(" ");
                     }
-                    resultList.add(row);
+                    result.append(row).append("\n");
                 }
-
-                return resultList;
-
-            } catch (SQLException e) {
-                // Manejo de excepciones en caso de error en la consulta
-                System.out.println("Error: " + e.getMessage());
-                return null;
-            } finally {
-                // Cierra la conexión a la base de datos
                 DBconnection.closeConnection();
+                sentencia.close();
+                return result.toString();
+            } catch(SQLException e){
+                System.out.println(e.getMessage());
             }
-        } else {
-            return null;
         }
+        return null;
     }
+
 
     /**
      * Método para ejecutar consultas de cambios (INSERT, UPDATE, DELETE) en la base de datos.
@@ -142,17 +121,4 @@ public class DBconnection {
         return false;
     }
 
-    /**
-     * Método para verificar si se encuentra algún valor según una consulta SELECT.
-     * @param select - Consulta SELECT a ejecutar.
-     * @param listValues - Valores de los parámetros de la consulta.
-     * @return boolean - True si se encuentra algún valor, False en caso contrario.
-     */
-    public static boolean findValue(String select, String[] listValues){
-        List<HashMap<String, String>> sql = ExecuteSelectSql(select, listValues);
-        if (sql != null && !sql.isEmpty()) {
-            return true;
-        }
-        return false;
-    }
 }
