@@ -1,5 +1,8 @@
 package com.example.chatproject;
 
+import com.example.chatproject.models.Client;
+import com.example.chatproject.models.MiObjeto;
+import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,7 +21,29 @@ public class ChatApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        try {
+            Client client = new Client("127.0.0.1", 49999);
+
+            // Crea un objeto y conviértelo a JSON
+            MiObjeto objeto = new MiObjeto("Ejemplo", 42);
+            Gson gson = new Gson();
+
+            String json = gson.toJson(objeto);
+
+            // Envia el JSON al servidor
+            client.sendCommand("Insertar", json);
+
+            // Recibe la respuesta del servidor
+            String respuestaServidor = client.receiveMessage();
+            System.out.println("Respuesta del servidor: " + respuestaServidor);
+
+            // Cierra la conexión con el servidor
+            client.closeConnection();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         launch();
     }
 }

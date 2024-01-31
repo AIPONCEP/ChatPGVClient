@@ -5,25 +5,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import com.google.gson.Gson;
 
 public class Client {
     private BufferedReader in;
-
     private PrintWriter out;
+    private Socket socket;
 
-    Socket socket = new Socket("127.0.0.1", 49999);
-
-    public Client() throws IOException {
+    public Client(String serverAddress, int serverPort) throws IOException {
         try {
+            socket = new Socket(serverAddress, serverPort);
             out = new PrintWriter(socket.getOutputStream(), true);
             System.out.println("Conexión establecida con el servidor.");
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
 
-    public void closeServer(){
+    public void sendCommand(String command, String message) {
+        out.println(command);
+        out.println(message);
+    }
+
+    public String receiveMessage() throws IOException {
+        return in.readLine();
+    }
+
+    public void closeConnection() {
         try {
             in.close();
             out.close();
@@ -33,40 +41,4 @@ public class Client {
             e.printStackTrace();
         }
     }
-
- /*
-    public static void main(String[] args) {
-        try {
-            Socket socket = new Socket("127.0.0.1", 49999);
-            System.out.println("Conexión establecida con el servidor.");
-
-            // Establece flujos de entrada y salida para texto
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-
-            // Crea un objeto y conviértelo a JSON
-            MiObjeto objeto = new MiObjeto("Ejemplo", 42);
-            Gson gson = new Gson();
-            String json = gson.toJson(objeto);
-
-            // Envia el JSON al servidor
-            out.println(json);
-
-            // Recibe la respuesta del servidor
-            String respuestaServidor = in.readLine();
-            System.out.println("Respuesta del servidor: " + respuestaServidor);
-
-            // Cierra las conexiones con el servidor
-            in.close();
-            out.close();
-            socket.close();
-            System.out.println("Conexiones cerradas");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-  */
 }
-Client client = new Client();
