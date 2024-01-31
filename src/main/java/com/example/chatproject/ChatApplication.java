@@ -1,6 +1,5 @@
 package com.example.chatproject;
 
-import com.example.chatproject.models.DBconnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,6 +19,6 @@ public class ChatApplication extends Application {
     }
 
     public static void main(String[] args) {
-        DBconnection.getConnection(); launch();
+        launch();
     }
 }
