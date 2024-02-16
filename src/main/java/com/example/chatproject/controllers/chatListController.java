@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.ArrayList;
 
+import static com.example.chatproject.models.Client.sendCommand;
+
 public class chatListController {
     @FXML
     private ListView usersList;

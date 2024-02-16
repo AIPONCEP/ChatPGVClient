@@ -1,5 +1,8 @@
 package com.example.chatproject.models;
 
+import com.example.chatproject.models.objects.User;
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,8 +10,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client {
-    private BufferedReader in;
-    private PrintWriter out;
+    private static BufferedReader in;
+    private static PrintWriter out;
     private Socket socket;
 
     public Client(String serverAddress, int serverPort) throws IOException {
@@ -22,12 +25,34 @@ public class Client {
         }
     }
 
-    public void sendCommand(String command, String message) {
+    public static void insertarUsuario(User nuevo_usuario){
+        try {
+            Client client = new Client("127.0.0.1", 49899);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(nuevo_usuario);
+
+            // Envia el JSON al servidor
+            client.sendCommand("Insertar", json);
+
+            // Recibe la respuesta del servidor
+            String respuestaServidor = client.receiveMessage();
+            System.out.println("Respuesta del servidor: " + respuestaServidor);
+
+            // Cierra la conexión con el servidor
+            client.closeConnection();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void sendCommand(String command, String message) {
         out.println(command);
         out.println(message);
     }
 
-    public String receiveMessage() throws IOException {
+    public static String receiveMessage() throws IOException {
         return in.readLine();
     }
 
