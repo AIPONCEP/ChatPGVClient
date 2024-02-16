@@ -4,25 +4,80 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="384.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatproject.controllers.chatController">
+<AnchorPane prefHeight="400.0" prefWidth="420.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatproject.controllers.chatController">
    <children>
-      <TextArea editable="false" layoutX="-4.0" layoutY="55.0" prefHeight="290.0" prefWidth="402.0" />
-      <Button layoutX="323.0" layoutY="362.0" mnemonicParsing="false" text="Enviar" />
-      <TextField layoutX="28.0" layoutY="359.0" prefHeight="32.0" prefWidth="278.0" />
-      <Label layoutX="93.0" layoutY="9.0" text="NOMBRE USUARIO" textFill="WHITE">
+      <ImageView fitHeight="400.0" fitWidth="462.0">
+         <image>
+            <Image url="@../../../images/fondoChat.jpg" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="chat_textArea" editable="false" layoutX="6.0" layoutY="55.0" opacity="0.85" prefHeight="290.0" prefWidth="451.0">
          <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="70.0" fitWidth="48.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+            <Font name="Segoe UI" size="18.0" />
+         </font></TextArea>
+      <TextField fx:id="chat_textField" layoutX="8.0" layoutY="350.0" prefHeight="41.0" prefWidth="320.0">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font></TextField>
+      <ImageView fitHeight="70.0" fitWidth="48.0" layoutX="8.0" layoutY="4.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <image>
             <Image url="@../../../images/icons/flecha.png" />
          </image>
       </ImageView>
+      <Label layoutX="87.0" layoutY="10.0" prefHeight="37.0" prefWidth="99.0" text="Usuario:" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow height="10.0" radius="4.5" width="10.0">
+               <color>
+                  <Color red="0.6192914843559265" green="0.1103999987244606" blue="0.9200000166893005" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label fx:id="label_userName" layoutX="193.0" layoutY="10.0" prefHeight="37.0" prefWidth="264.0" text="¡Nombre!" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow height="10.0" radius="4.5" width="10.0">
+               <color>
+                  <Color red="0.6192914843559265" green="0.1103999987244606" blue="0.9200000166893005" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Button layoutX="334.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#sendSms" opacity="0.65" prefHeight="41.0" prefWidth="123.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 10%;" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow height="65.0" radius="35.75" width="80.0">
+               <color>
+                  <Color green="0.8745098114013672" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <Label layoutX="359.0" layoutY="352.0" onMouseClicked="#sendSms" prefHeight="37.0" prefWidth="74.0" text="Enviar" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow height="10.0" radius="4.5" width="10.0">
+               <color>
+                  <Color red="0.6192914843559265" green="0.1103999987244606" blue="0.9200000166893005" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
    </children>
 </AnchorPane>

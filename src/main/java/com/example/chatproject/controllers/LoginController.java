@@ -7,6 +7,8 @@ import javafx.scene.input.MouseEvent;
 public class LoginController {
     public TextField name_TextField;
     public PasswordField pass_TextField;
-    public void send(MouseEvent mouseEvent) {
+    public void signIn(MouseEvent mouseEvent) {
+    }
+    public void newAccount(MouseEvent mouseEvent) {
     }
 }
