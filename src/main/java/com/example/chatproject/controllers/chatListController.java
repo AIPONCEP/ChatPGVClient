@@ -21,9 +21,6 @@ public class chatListController {
                     element.substring(5, element.length())
             );
         }
-
         */
-
-
     }
 }

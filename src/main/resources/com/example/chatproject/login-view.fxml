@@ -22,91 +22,90 @@
             <Image url="@../../../images/fondoLogin.jpg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" layoutY="8.0" prefHeight="400.0" prefWidth="420.0">
+      <VBox alignment="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="70.0" prefWidth="400.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="400.0">
-               <children>
-                  <ImageView fitHeight="64.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/icons/usuario.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </ImageView>
-               </children>
+            <ImageView fitHeight="64.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/icons/usuario.png" />
+               </image>
                <VBox.margin>
-                  <Insets />
+                  <Insets top="5.0" />
                </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </VBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="311.0" spacing="20.0">
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="55.0" layoutY="84.0" prefHeight="100.0" prefWidth="311.0" spacing="20.0">
+         <children>
+            <VBox prefHeight="75.0" prefWidth="196.0">
                <children>
-                  <VBox prefHeight="75.0" prefWidth="196.0">
-                     <children>
-                        <Label text="Nombre" textFill="WHITE">
-                           <font>
-                              <Font name="Segoe UI" size="18.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="name_TextField" opacity="0.9">
-                           <font>
-                              <Font name="Microsoft YaHei UI" size="13.0" />
-                           </font></TextField>
-                     </children>
-                     <HBox.margin>
-                        <Insets top="20.0" />
-                     </HBox.margin>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="299.0" spacing="20.0">
-               <children>
-                  <VBox prefHeight="61.0" prefWidth="192.0">
-                     <children>
-                        <Label text="Contraseña" textFill="WHITE">
-                           <font>
-                              <Font name="Segoe UI" size="18.0" />
-                           </font>
-                        </Label>
-                        <PasswordField fx:id="pass_TextField" opacity="0.9" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="314.0">
-               <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#send" opacity="0.8" prefHeight="45.0" prefWidth="258.0" style="-fx-background-radius: 10%; -fx-text-fill: White; -fx-background-color: black;" text="Enviar">
+                  <Label text="Nombre" textFill="WHITE">
                      <font>
-                        <Font name="Segoe UI Bold Italic" size="24.0" />
+                        <Font name="Segoe UI Italic" size="20.0" />
                      </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <effect>
-                        <InnerShadow radius="24.655" width="79.62">
-                           <color>
-                              <Color green="0.8761904835700989" blue="1.0" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
-                  </Button>
-                  <Label prefHeight="20.0" prefWidth="163.0" text="¡Registrate es gratis!" textFill="WHITE">
-                     <font>
-                        <Font name="Segoe UI Italic" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
-                     </VBox.margin>
                   </Label>
+                  <TextField fx:id="name_TextField" opacity="0.9">
+                     <font>
+                        <Font name="Segoe UI" size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <HBox.margin>
+                  <Insets top="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" layoutX="61.0" layoutY="184.0" prefHeight="100.0" prefWidth="299.0" spacing="20.0">
+         <children>
+            <VBox prefHeight="61.0" prefWidth="192.0">
+               <children>
+                  <Label text="Contraseña" textFill="WHITE">
+                     <font>
+                        <Font name="Segoe UI Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="pass_TextField" opacity="0.9">
+                     <font>
+                        <Font name="Segoe UI" size="18.0" />
+                     </font></PasswordField>
                </children>
             </VBox>
          </children>
-      </VBox>
+      </HBox>
+      <Button layoutX="82.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#signIn" opacity="0.8" prefHeight="45.0" prefWidth="258.0" style="-fx-background-radius: 10%; -fx-text-fill: White; -fx-background-color: black;">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow height="50.0" radius="32.0" width="80.0">
+               <color>
+                  <Color green="0.8745098114013672" blue="1.0" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <Label layoutX="136.0" layoutY="280.0" onMouseClicked="#signIn" prefHeight="37.0" prefWidth="151.0" text="Iniciar Sesión" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold Italic" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow height="10.0" radius="4.5" width="10.0">
+               <color>
+                  <Color red="0.28190475702285767" blue="0.4000000059604645" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+      <Label layoutX="130.0" layoutY="345.0" onMouseClicked="#newAccount" prefHeight="20.0" prefWidth="163.0" text="¡Registrate es gratis!" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Italic" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
