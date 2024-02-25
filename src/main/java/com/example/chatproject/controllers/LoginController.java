@@ -24,9 +24,12 @@ public class LoginController {
                 System.out.println(idUsuarioLogueado);
                 WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", "Usuarios");
             }
+        }else {
+            Alert.showAlert("Error", "Debe rellenar todos los campos.", javafx.scene.control.Alert.AlertType.ERROR);
         }
     }
 
     public void newAccount(MouseEvent mouseEvent) {
+        WindowOpener.openWindow("/com/example/chatproject/register-view.fxml", "Registro");
     }
 }

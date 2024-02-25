@@ -15,7 +15,8 @@ import static com.example.chatproject.models.Client.encontrarUsuarios;
 public class chatListController {
     @FXML
     private ListView<String> usersList; // Especifica el tipo de elementos que contendrá el ListView
-
+    //Me declaro la variable para guardar el nombre y pasarlo a la vista del chat
+    public static String userSelect;
     public void initialize(){
         String usuarios = encontrarUsuarios();
 
@@ -35,15 +36,20 @@ public class chatListController {
             if (selectedItem != null) {
                 // Imprimir el valor seleccionado en la consola
                 System.out.println("Valor seleccionado: " + selectedItem);
+                userSelect=selectedItem;
             }
         });
-
     }
 
     public void atrasClicked(){
-        WindowOpener.openWindow("com/example/chatproject/login-view.fxml", "Login");
+        WindowOpener.openWindow("/com/example/chatproject/login-view.fxml", "Login");
     }
     public void irAlChatClicked(){
+        if(userSelect!=null){
+            WindowOpener.openWindow("/com/example/chatproject/chat-view.fxml", "Chat");
+        }else {
+            Alert.showAlert("Error", "Debe seleccionar un usuario", javafx.scene.control.Alert.AlertType.ERROR);
+        }
     }
 }
 

@@ -54,7 +54,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Label layoutX="324.0" layoutY="339.0" onMouseClicked="#atrasClicked" prefHeight="37.0" prefWidth="59.0" text="Chat" textFill="WHITE">
+      <Label layoutX="324.0" layoutY="339.0" onMouseClicked="#irAlChatClicked" prefHeight="37.0" prefWidth="59.0" text="Chat" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold Italic" size="24.0" />
          </font>
