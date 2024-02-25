@@ -2,6 +2,7 @@ package com.example.chatproject;
 
 import com.example.chatproject.models.Client;
 import com.example.chatproject.models.MiObjeto;
+import com.example.chatproject.models.objects.Message;
 import com.example.chatproject.models.objects.User;
 import com.google.gson.Gson;
 import javafx.application.Application;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.chatproject.models.Client.insertarUsuario;
+import static com.example.chatproject.models.Client.*;
 
 public class ChatApplication extends Application {
     @Override
@@ -26,7 +27,10 @@ public class ChatApplication extends Application {
 
     public static void main(String[] args) throws IOException {
         launch();
-        insertarUsuario(new User(1,"EE","131",123131));
+        /*
+        insertarUsuario(new User(1,"EE","131",123131111));
+        insertarMensaje(new Message(1, 2 ,3, "Test", "2024-02-25 10:15:00"));
 
+         */
     }
 }

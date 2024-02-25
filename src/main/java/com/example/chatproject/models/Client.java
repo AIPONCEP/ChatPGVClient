@@ -1,5 +1,6 @@
 package com.example.chatproject.models;
 
+import com.example.chatproject.models.objects.Message;
 import com.example.chatproject.models.objects.User;
 import com.google.gson.Gson;
 
@@ -33,11 +34,7 @@ public class Client {
             String json = gson.toJson(nuevo_usuario);
 
             // Envia el JSON al servidor
-            client.sendCommand("Insertar", json);
-
-            // Recibe la respuesta del servidor
-            String respuestaServidor = client.receiveMessage();
-            System.out.println("Respuesta del servidor: " + respuestaServidor);
+            client.sendCommand("Insertar usuario", json);
 
             // Cierra la conexión con el servidor
             client.closeConnection();
@@ -46,6 +43,72 @@ public class Client {
             e.printStackTrace();
         }
     }
+
+    public static void insertarMensaje(Message mensaje){
+        try {
+            Client client = new Client("127.0.0.1", 49899);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(mensaje);
+
+            // Envia el JSON al servidor
+            client.sendCommand("Insertar mensaje", json);
+
+            // Cierra la conexión con el servidor
+            client.closeConnection();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String encontrarUsuario(String nombre, String contraseña){
+        try {
+            Client client = new Client("127.0.0.1", 49898);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(nombre +" "+ contraseña);
+
+            // Envia el JSON al servidor
+            client.sendCommand("Select usuario" ,json);
+
+            // Recibe la respuesta del servidor
+            String respuestaServidor = client.receiveMessage();
+            System.out.println("Respuesta del servidor: " + respuestaServidor);
+            // Cierra la conexión con el servidor
+            client.closeConnection();
+            if (!respuestaServidor.equals("No se encontró ningún usuario con el nombre y contraseña proporcionados.")){
+                return respuestaServidor;
+            }else {
+                return null;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String encontrarUsuarios(){
+        try {
+            Client client = new Client("127.0.0.1", 49898);
+
+            // Envia el JSON al servidor
+            client.sendCommand("Select usuarios" ,"");
+
+            // Recibe la respuesta del servidor
+            String respuestaServidor = client.receiveMessage();
+            System.out.println("Respuesta del servidor: " + respuestaServidor);
+            // Cierra la conexión con el servidor
+            client.closeConnection();
+
+            return respuestaServidor;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "No se han encontrado usuarios registrados";
+    }
+
 
     public static void sendCommand(String command, String message) {
         out.println(command);

@@ -13,24 +13,24 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatproject.RegisterView">
+<AnchorPane prefHeight="400.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatproject.controllers.RegisterContoller">
    <children>
       <ImageView fitHeight="400.0" fitWidth="457.0">
          <image>
-            <Image url="@../../../images/fondoChat.jpg" />
+            <Image url="@../../../images/fondoRegister.jpg" />
          </image>
       </ImageView>
-      <VBox layoutX="138.0" layoutY="97.0" prefHeight="50.0" prefWidth="180.0">
+      <VBox layoutX="139.0" layoutY="104.0" prefHeight="50.0" prefWidth="180.0">
          <children>
             <Label text="Nombre" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Italic" size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <TextField opacity="0.9">
+            <TextField fx:id="name_TextField" opacity="0.9">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
@@ -40,17 +40,17 @@
             </TextField>
          </children>
       </VBox>
-      <VBox layoutX="138.0" layoutY="166.0" prefHeight="50.0" prefWidth="180.0">
+      <VBox layoutX="139.0" layoutY="168.0" prefHeight="50.0" prefWidth="180.0">
          <children>
             <Label text="Contraseña" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Italic" size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <PasswordField>
+            <PasswordField fx:id="pass_TextField">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
@@ -60,17 +60,17 @@
             </PasswordField>
          </children>
       </VBox>
-      <VBox layoutX="138.0" layoutY="235.0" prefHeight="50.0" prefWidth="180.0">
+      <VBox layoutX="139.0" layoutY="232.0" prefHeight="50.0" prefWidth="180.0">
          <children>
             <Label text="Teléfono" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Italic" size="20.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <TextField opacity="0.9">
+            <TextField fx:id="tlf_TextField" opacity="0.9">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
@@ -85,7 +85,7 @@
             <Image url="@../../../images/icons/usuario.png" />
          </image>
       </ImageView>
-      <Button layoutX="32.0" layoutY="329.0" mnemonicParsing="false" opacity="0.65" prefHeight="41.0" prefWidth="180.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 10%;" textFill="WHITE">
+      <Button layoutX="32.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#signIn" opacity="0.65" prefHeight="41.0" prefWidth="180.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 10%;" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold Italic" size="18.0" />
          </font>
@@ -97,7 +97,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button layoutX="245.0" layoutY="329.0" mnemonicParsing="false" opacity="0.65" prefHeight="41.0" prefWidth="180.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 10%;" textFill="WHITE">
+      <Button layoutX="245.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#newAccount" opacity="0.65" prefHeight="41.0" prefWidth="180.0" style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 10%;" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold Italic" size="18.0" />
          </font>
@@ -109,26 +109,26 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Label layoutX="47.0" layoutY="331.0" prefHeight="37.0" prefWidth="151.0" text="Iniciar Sesión" textFill="WHITE">
+      <Label layoutX="47.0" layoutY="331.0" onMouseClicked="#signIn" prefHeight="37.0" prefWidth="151.0" text="Iniciar Sesión" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold Italic" size="24.0" />
          </font>
          <effect>
             <InnerShadow height="10.0" radius="4.5" width="10.0">
                <color>
-                  <Color red="0.28190475702285767" blue="0.4000000059604645" />
+                  <Color red="0.1103999987244606" green="0.6501333117485046" blue="0.9200000166893005" />
                </color>
             </InnerShadow>
          </effect>
       </Label>
-      <Label layoutX="271.0" layoutY="331.0" prefHeight="37.0" prefWidth="128.0" text="Registrarse" textFill="WHITE">
+      <Label layoutX="271.0" layoutY="331.0" onMouseClicked="#newAccount" prefHeight="37.0" prefWidth="128.0" text="Registrarse" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold Italic" size="24.0" />
          </font>
          <effect>
             <InnerShadow height="10.0" radius="4.5" width="10.0">
                <color>
-                  <Color red="0.28190475702285767" blue="0.4000000059604645" />
+                  <Color red="0.1103999987244606" green="0.6501333117485046" blue="0.9200000166893005" />
                </color>
             </InnerShadow>
          </effect>
