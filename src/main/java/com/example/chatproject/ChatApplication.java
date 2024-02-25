@@ -30,7 +30,6 @@ public class ChatApplication extends Application {
         /*
         insertarUsuario(new User(1,"EE","131",123131111));
         insertarMensaje(new Message(1, 2 ,3, "Test", "2024-02-25 10:15:00"));
-
          */
     }
 }

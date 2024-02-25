@@ -22,11 +22,9 @@ public class LoginController {
             if (encontrarUsuario(name_TextField.getText(), pass_TextField.getText()) != null){
                 idUsuarioLogueado = encontrarUsuario(name_TextField.getText(), pass_TextField.getText());
                 System.out.println(idUsuarioLogueado);
-
                 WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", "Usuarios");
             }
         }
-
     }
 
     public void newAccount(MouseEvent mouseEvent) {
