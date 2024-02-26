@@ -13,6 +13,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import static com.example.chatproject.models.Client.insertarMensaje;
@@ -72,7 +73,22 @@ public class chatController implements Initializable {
                 String mensajeRecibido = recibirMensajes(String.valueOf(numeroUsuario), String.valueOf(numeroContactoSelect));
 
                 if (mensajeRecibido != null && !mensajeRecibido.equals(ultimoMensajeRecibido)) {
-                    Platform.runLater(() -> chat_textArea.appendText(mensajeRecibido + "\n"));
+
+                    // Dividir la cadena en filas individuales
+                    String[] filas = mensajeRecibido.split(" nombre:");
+
+                    // Iterar sobre cada fila e imprimir
+                    for (String fila : filas) {
+                        // Agregar "nombre" al principio de cada fila excepto la primera
+                        if (!fila.startsWith("nombre")) {
+                            fila = "nombre" + fila;
+                        }
+                        // Copiar el valor de la fila a una variable local final
+                        final String filaFinal = fila;
+                        // Agregar la fila al TextArea
+                        Platform.runLater(() -> chat_textArea.appendText(filaFinal + "\n"));
+                    }
+
                     ultimoMensajeRecibido = mensajeRecibido;
                 }
 
@@ -82,5 +98,7 @@ public class chatController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 
 }
