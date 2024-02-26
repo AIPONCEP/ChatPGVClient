@@ -27,7 +27,6 @@ public class WindowOpener {
 
             // Mostrar la nueva ventana
             newStage.show();
-
         } catch (IOException e) {
             // Manejar cualquier excepción que pueda ocurrir al cargar el archivo FXML
             e.printStackTrace();

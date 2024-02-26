@@ -28,12 +28,10 @@ public class chatController implements Initializable {
     public TextField chat_textField;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-            // Inicia un hilo para recibir mensajes en tiempo real
-            Thread thread = new Thread(this::recibirMensajesEnTiempoReal);
-            thread.setDaemon(true); // Establece el hilo como demonio para que se detenga cuando la aplicación se cierre
-            thread.start();
-
+        // Inicia un hilo para recibir mensajes en tiempo real
+        Thread thread = new Thread(this::recibirMensajesEnTiempoReal);
+        thread.setDaemon(true); // Establece el hilo como demonio para que se detenga cuando la aplicación se cierre
+        thread.start();
         label_userName.setText(chatListController.userSelect);
     }
     public void sendSms(MouseEvent mouseEvent) {
@@ -50,6 +48,7 @@ public class chatController implements Initializable {
                 chat_textField.getText(),
                 fechaHoraFormateada
         );
+        // Si el mensaje no esta vacio inserta el mensaje y setea el textfield a ""
         if (!mensaje.getTxt_Mensaje().isEmpty()){
             insertarMensaje(mensaje);
             chat_textField.setText("");
@@ -59,10 +58,12 @@ public class chatController implements Initializable {
         WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", label_userName,"Usuarios");
     }
 
-    // Método para simular la recepción de mensajes en tiempo real
-
     private String ultimoMensajeRecibido = "";
 
+    /**
+     * Método recibirMensajesEnTiempoReal
+     * se usa para simular la recepción de mensajes en tiempo real
+     */
     private void recibirMensajesEnTiempoReal() {
         try {
             while (true) {
@@ -74,8 +75,8 @@ public class chatController implements Initializable {
 
                 // Simulamos un mensaje recibido
                 String mensajeRecibido = recibirMensajes(String.valueOf(numeroUsuario), String.valueOf(numeroContactoSelect));
-                if (mensajeRecibido != null && !mensajeRecibido.equals(ultimoMensajeRecibido)) {
 
+                if (mensajeRecibido != null && !mensajeRecibido.equals(ultimoMensajeRecibido)) {
                     // Limpiar el TextArea antes de agregar el nuevo mensaje
                     Platform.runLater(() -> chat_textArea.clear());
 
@@ -84,24 +85,17 @@ public class chatController implements Initializable {
 
                     // Iterar sobre cada fila e imprimir
                     for (String fila : filas) {
-
                         // Copiar el valor de la fila a una variable local final
                         final String filaFinal = fila.replace("txt_Mensaje:", ": ");
-
                         // Agregar la fila al TextArea
                         Platform.runLater(() -> chat_textArea.appendText(filaFinal + "\n"));
                     }
                     ultimoMensajeRecibido = mensajeRecibido;
                 }
-
                 Thread.sleep(3000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
-
-
-
 }

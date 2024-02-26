@@ -10,6 +10,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * @author Ana Isabel Ponce Pérez, Jose David Falcon
+ * Cliente ChatPGVClient
+ */
+
 public class Client {
     private static BufferedReader in;
     private static PrintWriter out;

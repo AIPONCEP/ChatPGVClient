@@ -17,6 +17,12 @@ public class LoginController {
     public Label nombreLabel;
     public static String idUsuarioLogueado;
 
+    /**
+     * Método singIn
+     * comprueba que los textfiels no esten vacios y
+     * si el método encontrarUsuario no deuvuelve null cambia a vista Usuarios y guardar datos en idUsuarioLogueado
+     * @param mouseEvent
+     */
     public void signIn(MouseEvent mouseEvent) {
         if (!name_TextField.getText().isEmpty() & !pass_TextField.getText().isEmpty()){
             if (encontrarUsuario(name_TextField.getText(), pass_TextField.getText()) != null){
