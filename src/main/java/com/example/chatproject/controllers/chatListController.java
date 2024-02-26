@@ -1,6 +1,7 @@
 package com.example.chatproject.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import static com.example.chatproject.models.Client.encontrarUsuarios;
@@ -13,6 +14,9 @@ import javafx.scene.control.ListView;
 import static com.example.chatproject.models.Client.encontrarUsuarios;
 
 public class chatListController {
+    @FXML
+    private Label Title;
+
     @FXML
     private ListView<String> usersList; // Especifica el tipo de elementos que contendrá el ListView
     //Me declaro la variable para guardar el nombre y pasarlo a la vista del chat
@@ -42,11 +46,11 @@ public class chatListController {
     }
 
     public void atrasClicked(){
-        WindowOpener.openWindow("/com/example/chatproject/login-view.fxml", "Login");
+        WindowOpener.openWindow("/com/example/chatproject/login-view.fxml", Title,"Login");
     }
     public void irAlChatClicked(){
         if(userSelect!=null){
-            WindowOpener.openWindow("/com/example/chatproject/chat-view.fxml", "Chat");
+            WindowOpener.openWindow("/com/example/chatproject/chat-view.fxml", Title,"Chat");
         }else {
             Alert.showAlert("Error", "Debe seleccionar un usuario", javafx.scene.control.Alert.AlertType.ERROR);
         }

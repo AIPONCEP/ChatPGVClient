@@ -20,6 +20,6 @@ public class chatController implements Initializable {
     public void sendSms(MouseEvent mouseEvent) {
     }
     public void back(MouseEvent mouseEvent) {
-        WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", "Usuarios");
+        WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", label_userName,"Usuarios");
     }
 }

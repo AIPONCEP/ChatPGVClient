@@ -27,55 +27,50 @@ public class Client {
     }
 
     public static void insertarUsuario(User nuevo_usuario){
-        try {
-            Client client = new Client("127.0.0.1", 49899);
 
-            Gson gson = new Gson();
-            String json = gson.toJson(nuevo_usuario);
+        Gson gson = new Gson();
+        String json = gson.toJson(nuevo_usuario);
+        Client client = getClient();
 
-            // Envia el JSON al servidor
-            client.sendCommand("Insertar usuario", json);
+        // Envia el JSON al servidor
+        sendCommand("Insertar usuario", json);
 
-            // Cierra la conexión con el servidor
-            client.closeConnection();
+        // Cierra la conexión con el servidor
+        assert client != null;
+        client.closeConnection();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void insertarMensaje(Message mensaje){
-        try {
-            Client client = new Client("127.0.0.1", 49899);
+        Client client = getClient();
 
-            Gson gson = new Gson();
-            String json = gson.toJson(mensaje);
+        Gson gson = new Gson();
+        String json = gson.toJson(mensaje);
 
-            // Envia el JSON al servidor
-            client.sendCommand("Insertar mensaje", json);
+        // Envia el JSON al servidor
+        sendCommand("Insertar mensaje", json);
 
-            // Cierra la conexión con el servidor
-            client.closeConnection();
+        // Cierra la conexión con el servidor
+        assert client != null;
+        client.closeConnection();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static String encontrarUsuario(String nombre, String contraseña){
         try {
-            Client client = new Client("127.0.0.1", 49898);
+            Client client = getClient();
 
             Gson gson = new Gson();
             String json = gson.toJson(nombre +" "+ contraseña);
 
             // Envia el JSON al servidor
-            client.sendCommand("Select usuario" ,json);
+            sendCommand("Select usuario" ,json);
 
             // Recibe la respuesta del servidor
-            String respuestaServidor = client.receiveMessage();
-            System.out.println("Respuesta del servidor: " + respuestaServidor);
+            String respuestaServidor = receiveMessage();
+
             // Cierra la conexión con el servidor
+            assert client != null;
             client.closeConnection();
             if (!respuestaServidor.equals("No se encontró ningún usuario con el nombre y contraseña proporcionados.")){
                 return respuestaServidor;
@@ -90,15 +85,16 @@ public class Client {
 
     public static String encontrarUsuarios(){
         try {
-            Client client = new Client("127.0.0.1", 49898);
+            Client client = getClient();
 
             // Envia el JSON al servidor
-            client.sendCommand("Select usuarios" ,"");
+            sendCommand("Select usuarios" ,"");
 
             // Recibe la respuesta del servidor
-            String respuestaServidor = client.receiveMessage();
-            System.out.println("Respuesta del servidor: " + respuestaServidor);
+            String respuestaServidor = receiveMessage();
+
             // Cierra la conexión con el servidor
+            assert client != null;
             client.closeConnection();
 
             return respuestaServidor;
@@ -117,6 +113,16 @@ public class Client {
 
     public static String receiveMessage() throws IOException {
         return in.readLine();
+    }
+
+    public static Client getClient(){
+        try {
+            Client client = new Client("127.0.0.1", 49898);
+            return client;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void closeConnection() {

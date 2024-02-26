@@ -38,7 +38,7 @@
          <children>
             <VBox prefHeight="75.0" prefWidth="196.0">
                <children>
-                  <Label text="Nombre" textFill="WHITE">
+                  <Label fx:id="nombreLabel" text="Nombre" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Italic" size="20.0" />
                      </font>

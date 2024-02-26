@@ -1,6 +1,7 @@
 package com.example.chatproject.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +15,9 @@ public class LoginController {
     @FXML
     public PasswordField pass_TextField;
 
+    @FXML
+    public Label nombreLabel;
+
     public String idUsuarioLogueado;
 
     public void signIn(MouseEvent mouseEvent) {
@@ -22,7 +26,7 @@ public class LoginController {
             if (encontrarUsuario(name_TextField.getText(), pass_TextField.getText()) != null){
                 idUsuarioLogueado = encontrarUsuario(name_TextField.getText(), pass_TextField.getText());
                 System.out.println(idUsuarioLogueado);
-                WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", "Usuarios");
+                WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", nombreLabel,"Usuarios");
             }
         }else {
             Alert.showAlert("Error", "Debe rellenar todos los campos.", javafx.scene.control.Alert.AlertType.ERROR);
@@ -30,6 +34,6 @@ public class LoginController {
     }
 
     public void newAccount(MouseEvent mouseEvent) {
-        WindowOpener.openWindow("/com/example/chatproject/register-view.fxml", "Registro");
+        WindowOpener.openWindow("/com/example/chatproject/register-view.fxml", nombreLabel,"Registro");
     }
 }
