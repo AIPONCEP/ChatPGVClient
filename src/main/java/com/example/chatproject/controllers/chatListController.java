@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
+import static com.example.chatproject.controllers.LoginController.idUsuarioLogueado;
 import static com.example.chatproject.models.Client.encontrarUsuarios;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +24,8 @@ public class chatListController {
     private ObservableList<String> ids = FXCollections.observableArrayList();
 
     public void initialize(){
-        String usuarios = encontrarUsuarios();
+
+        String usuarios = encontrarUsuarios(idUsuarioLogueado);
 
         String[] lista = usuarios.substring(7).split("\\s+nombre:");
 

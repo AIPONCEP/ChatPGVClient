@@ -71,24 +71,23 @@ public class chatController implements Initializable {
 
                 // Simulamos un mensaje recibido
                 String mensajeRecibido = recibirMensajes(String.valueOf(numeroUsuario), String.valueOf(numeroContactoSelect));
-
                 if (mensajeRecibido != null && !mensajeRecibido.equals(ultimoMensajeRecibido)) {
 
+                    // Limpiar el TextArea antes de agregar el nuevo mensaje
+                    Platform.runLater(() -> chat_textArea.clear());
+
                     // Dividir la cadena en filas individuales
-                    String[] filas = mensajeRecibido.split(" nombre:");
+                    String[] filas = mensajeRecibido.substring(7).split(" nombre:");
 
                     // Iterar sobre cada fila e imprimir
                     for (String fila : filas) {
-                        // Agregar "nombre" al principio de cada fila excepto la primera
-                        if (!fila.startsWith("nombre")) {
-                            fila = "nombre" + fila;
-                        }
+
                         // Copiar el valor de la fila a una variable local final
-                        final String filaFinal = fila;
+                        final String filaFinal = fila.replace("txt_Mensaje:", ": ");
+
                         // Agregar la fila al TextArea
                         Platform.runLater(() -> chat_textArea.appendText(filaFinal + "\n"));
                     }
-
                     ultimoMensajeRecibido = mensajeRecibido;
                 }
 
@@ -98,6 +97,7 @@ public class chatController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
 

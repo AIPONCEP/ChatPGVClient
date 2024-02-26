@@ -81,12 +81,14 @@ public class Client {
         return null;
     }
 
-    public static String encontrarUsuarios(){
+    public static String encontrarUsuarios(String idUsuario){
         try {
             Client client = getClient();
+            Gson gson = new Gson();
+            String json = gson.toJson(idUsuario);
 
             // Envia el JSON al servidor
-            sendCommand("Select usuarios" ,"");
+            sendCommand("Select usuarios" ,json);
 
             // Recibe la respuesta del servidor
             String respuestaServidor = receiveMessage();
