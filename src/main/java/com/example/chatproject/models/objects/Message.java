@@ -3,11 +3,8 @@ package com.example.chatproject.models.objects;
 public class Message {
 
     private int id_remitente;
-
     private int id_destinatario;
-
     private String txt_Mensaje;
-
     private String fecha;
 
     public Message( int id_remitente, int id_destinatario, String txt_Mensaje, String fecha) {

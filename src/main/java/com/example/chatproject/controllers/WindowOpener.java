@@ -10,8 +10,7 @@ import java.io.IOException;
 public class WindowOpener {
 
     /**
-     * Método para abrir una nueva ventana con el contenido cargado desde un archivo FXML.
-     *
+     * Método para abrir una nueva ventana con el contenido cargado desde un archivo FXML.     *
      * @param newFxmlPath La ruta del archivo FXML que define la interfaz de usuario de la nueva ventana.
      * @param oldTitle La ruta del archivo FXML de la ventana actual que se cerrará.
      * @param title El título de la nueva ventana que se mostrará en la barra de título.
