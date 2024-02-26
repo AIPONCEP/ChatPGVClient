@@ -16,12 +16,10 @@ import static com.example.chatproject.models.Client.encontrarUsuarios;
 public class chatListController {
     @FXML
     private Label Title;
-
     @FXML
     private ListView<String> usersList; // Especifica el tipo de elementos que contendrá el ListView
     //Me declaro la variable para guardar el nombre y pasarlo a la vista del chat
     public static String userSelect;
-
     public static String idSelect;
 
     // Lista para almacenar los nombres y sus correspondientes ID
@@ -64,10 +62,10 @@ public class chatListController {
             }
         });
     }
-
     public void atrasClicked(){
         WindowOpener.openWindow("/com/example/chatproject/login-view.fxml", Title,"Login");
     }
+
     public void irAlChatClicked(){
         if(userSelect != null){
             WindowOpener.openWindow("/com/example/chatproject/chat-view.fxml", Title,"Chat");

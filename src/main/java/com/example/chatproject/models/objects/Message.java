@@ -17,8 +17,6 @@ public class Message {
         this.fecha = fecha;
     }
 
-
-
     public int getId_remitente() {
         return id_remitente;
     }

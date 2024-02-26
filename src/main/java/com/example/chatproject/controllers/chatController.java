@@ -37,7 +37,6 @@ public class chatController implements Initializable {
                 chat_textField.getText(),
                 fechaHoraFormateada
         );
-
         insertarMensaje(mensaje);
     }
     public void back(MouseEvent mouseEvent) {
