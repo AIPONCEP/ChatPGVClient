@@ -5,13 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import static com.example.chatproject.models.Client.encontrarUsuarios;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 
-import static com.example.chatproject.models.Client.encontrarUsuarios;
 
 public class chatListController {
     @FXML

@@ -1,6 +1,8 @@
 package com.example.chatproject.controllers;
 
 import com.example.chatproject.models.objects.Message;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -14,13 +16,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import static com.example.chatproject.models.Client.insertarMensaje;
+import static com.example.chatproject.models.Client.recibirMensajes;
 
 public class chatController implements Initializable {
+    @FXML
     public Label label_userName;
+    @FXML
     public TextArea chat_textArea;
+    @FXML
     public TextField chat_textField;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+            // Inicia un hilo para recibir mensajes en tiempo real
+            Thread thread = new Thread(this::recibirMensajesEnTiempoReal);
+            thread.setDaemon(true); // Establece el hilo como demonio para que se detenga cuando la aplicación se cierre
+            thread.start();
+
         label_userName.setText(chatListController.userSelect);
     }
     public void sendSms(MouseEvent mouseEvent) {
@@ -42,4 +54,31 @@ public class chatController implements Initializable {
     public void back(MouseEvent mouseEvent) {
         WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", label_userName,"Usuarios");
     }
+
+    // Método para simular la recepción de mensajes en tiempo real
+    private void recibirMensajesEnTiempoReal() {
+        try {
+            // Simulamos la recepción de mensajes cada 3 segundos
+            while (true) {
+                String idUsuarioLogueado = LoginController.idUsuarioLogueado;
+                int numeroUsuario = Integer.parseInt(idUsuarioLogueado.substring(idUsuarioLogueado.indexOf(':') + 1).trim());
+
+                String idContactoSelect = chatListController.idSelect;
+                int numeroContactoSelect = Integer.parseInt(idContactoSelect.substring(idContactoSelect.indexOf(':') + 1).trim());
+
+                // Simulamos un mensaje recibido
+                String mensajeRecibido = recibirMensajes(String.valueOf(numeroUsuario), String.valueOf(numeroContactoSelect));
+
+                // Actualiza el TextArea con el mensaje recibido en el hilo de la interfaz de usuario
+                Platform.runLater(() -> chat_textArea.appendText(mensajeRecibido+"\n"));
+
+                // Espera 3 segundos antes de recibir el siguiente mensaje (simulado)
+                Thread.sleep(10000);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

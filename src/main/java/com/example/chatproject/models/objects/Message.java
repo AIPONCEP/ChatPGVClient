@@ -48,4 +48,11 @@ public class Message {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "txt_Mensaje='" + txt_Mensaje + '\'' +
+                '}';
+    }
 }
