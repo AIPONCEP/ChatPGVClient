@@ -38,7 +38,6 @@ public class Client {
         // Cierra la conexión con el servidor
         assert client != null;
         client.closeConnection();
-
     }
 
     public static void insertarMensaje(Message mensaje){
@@ -53,7 +52,6 @@ public class Client {
         // Cierra la conexión con el servidor
         assert client != null;
         client.closeConnection();
-
     }
 
     public static String encontrarUsuario(String nombre, String contraseña){
@@ -106,6 +104,35 @@ public class Client {
     }
 
 
+    public static String recibirMensajes(String id_remitente, String id_destinatario){
+        try {
+            Client client = getClient();
+
+            Gson gson = new Gson();
+            String json = gson.toJson(id_remitente +" "+id_destinatario);
+
+            // Envia el JSON al servidor
+            sendCommand("Select mensaje" ,json);
+
+            // Recibe la respuesta del servidor
+            String respuestaServidor = receiveMessage();
+
+            // Cierra la conexión con el servidor
+            assert client != null;
+            client.closeConnection();
+            if (!respuestaServidor.equals("Error, no se encontraron conversaciones registradas.")){
+                return respuestaServidor;
+            }else {
+                return null;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
     public static void sendCommand(String command, String message) {
         out.println(command);
         out.println(message);
@@ -117,7 +144,7 @@ public class Client {
 
     public static Client getClient(){
         try {
-            Client client = new Client("127.0.0.1", 49898);
+            Client client = new Client("192.168.0.177", 49898);
             return client;
         } catch (IOException e) {
             e.printStackTrace();
