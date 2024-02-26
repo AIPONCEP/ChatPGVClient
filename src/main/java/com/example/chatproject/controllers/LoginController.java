@@ -18,14 +18,13 @@ public class LoginController {
     @FXML
     public Label nombreLabel;
 
-    public String idUsuarioLogueado;
+    public static String idUsuarioLogueado;
 
     public void signIn(MouseEvent mouseEvent) {
 
         if (!name_TextField.getText().isEmpty() & !pass_TextField.getText().isEmpty()){
             if (encontrarUsuario(name_TextField.getText(), pass_TextField.getText()) != null){
                 idUsuarioLogueado = encontrarUsuario(name_TextField.getText(), pass_TextField.getText());
-                System.out.println(idUsuarioLogueado);
                 WindowOpener.openWindow("/com/example/chatproject/chatList-view.fxml", nombreLabel,"Usuarios");
             }
         }else {

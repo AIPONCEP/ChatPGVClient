@@ -21,12 +21,27 @@ public class chatListController {
     private ListView<String> usersList; // Especifica el tipo de elementos que contendrá el ListView
     //Me declaro la variable para guardar el nombre y pasarlo a la vista del chat
     public static String userSelect;
+
+    public static String idSelect;
+
+    // Lista para almacenar los nombres y sus correspondientes ID
+    private ObservableList<String> nombres = FXCollections.observableArrayList();
+    private ObservableList<String> ids = FXCollections.observableArrayList();
+
     public void initialize(){
         String usuarios = encontrarUsuarios();
 
         String[] lista = usuarios.substring(7).split("\\s+nombre:");
 
-        ObservableList<String> items = FXCollections.observableArrayList(lista);
+        ObservableList<String> items = FXCollections.observableArrayList();
+
+        // Agregar cada elemento a la lista, excluyendo el ID
+        for (String item : lista) {
+            String[] partes = item.split("\\s+", 2);
+            ids.add(partes[1]);  // Añadir ID a la lista de IDs
+            nombres.add(partes[0]);  // Añadir nombre a la lista de nombres
+            items.add(partes[0]);  // Añadir nombre al ListView
+        }
 
         // Asignar la lista observable al ListView
         usersList.setItems(items);
@@ -38,9 +53,14 @@ public class chatListController {
 
             // Verificar si hay un elemento seleccionado
             if (selectedItem != null) {
-                // Imprimir el valor seleccionado en la consola
-                System.out.println("Valor seleccionado: " + selectedItem);
-                userSelect=selectedItem;
+
+                // Obtener el ID correspondiente al nombre seleccionado
+                int index = nombres.indexOf(selectedItem);
+                if (index != -1) {
+
+                    idSelect = ids.get(index);
+                    userSelect = selectedItem;
+                }
             }
         });
     }
@@ -49,9 +69,9 @@ public class chatListController {
         WindowOpener.openWindow("/com/example/chatproject/login-view.fxml", Title,"Login");
     }
     public void irAlChatClicked(){
-        if(userSelect!=null){
+        if(userSelect != null){
             WindowOpener.openWindow("/com/example/chatproject/chat-view.fxml", Title,"Chat");
-        }else {
+        } else {
             Alert.showAlert("Error", "Debe seleccionar un usuario", javafx.scene.control.Alert.AlertType.ERROR);
         }
     }

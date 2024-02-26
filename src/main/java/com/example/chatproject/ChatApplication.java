@@ -1,18 +1,11 @@
 package com.example.chatproject;
 
-import com.example.chatproject.models.Client;
-import com.example.chatproject.models.MiObjeto;
-import com.example.chatproject.models.objects.Message;
-import com.example.chatproject.models.objects.User;
-import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import static com.example.chatproject.models.Client.*;
 
 public class ChatApplication extends Application {
     @Override

@@ -1,7 +1,6 @@
 package com.example.chatproject.models.objects;
 
 public class Message {
-    private int id;
 
     private int id_remitente;
 
@@ -11,21 +10,14 @@ public class Message {
 
     private String fecha;
 
-    public Message(int id, int id_remitente, int id_destinatario, String txt_Mensaje, String fecha) {
-        this.id = id;
+    public Message( int id_remitente, int id_destinatario, String txt_Mensaje, String fecha) {
         this.id_remitente = id_remitente;
         this.id_destinatario = id_destinatario;
         this.txt_Mensaje = txt_Mensaje;
         this.fecha = fecha;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getId_remitente() {
         return id_remitente;
