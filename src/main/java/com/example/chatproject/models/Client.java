@@ -144,7 +144,7 @@ public class Client {
 
     public static Client getClient(){
         try {
-            Client client = new Client("192.168.0.177", 49898);
+            Client client = new Client("127.0.0.1", 49898);
             return client;
         } catch (IOException e) {
             e.printStackTrace();

@@ -56,9 +56,11 @@ public class chatController implements Initializable {
     }
 
     // Método para simular la recepción de mensajes en tiempo real
+
+    private String ultimoMensajeRecibido = "";
+
     private void recibirMensajesEnTiempoReal() {
         try {
-            // Simulamos la recepción de mensajes cada 3 segundos
             while (true) {
                 String idUsuarioLogueado = LoginController.idUsuarioLogueado;
                 int numeroUsuario = Integer.parseInt(idUsuarioLogueado.substring(idUsuarioLogueado.indexOf(':') + 1).trim());
@@ -69,16 +71,16 @@ public class chatController implements Initializable {
                 // Simulamos un mensaje recibido
                 String mensajeRecibido = recibirMensajes(String.valueOf(numeroUsuario), String.valueOf(numeroContactoSelect));
 
-                // Actualiza el TextArea con el mensaje recibido en el hilo de la interfaz de usuario
-                Platform.runLater(() -> chat_textArea.appendText(mensajeRecibido+"\n"));
+                if (mensajeRecibido != null && !mensajeRecibido.equals(ultimoMensajeRecibido)) {
+                    Platform.runLater(() -> chat_textArea.appendText(mensajeRecibido + "\n"));
+                    ultimoMensajeRecibido = mensajeRecibido;
+                }
 
-                // Espera 3 segundos antes de recibir el siguiente mensaje (simulado)
-                Thread.sleep(10000);
+                Thread.sleep(3000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-
 
 }
